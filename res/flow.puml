@@ -1,0 +1,11 @@
+@startuml
+graph foo {
+    root -- r1 -- r3
+    root -- r2 -- r3
+    r1 -- n1
+    r2 -- n2
+    r3 -- n3
+    r2 [color=gray, style=filled]
+    n1 [color=gray, style=filled]
+}
+@enduml

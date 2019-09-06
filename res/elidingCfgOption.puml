@@ -1,0 +1,30 @@
+@startuml
+
+skinparam sequenceMessageAlign center
+
+6LR1 -> 6LR2: DIO(cfg1)
+6LR1 <- 6LR2: DAO
+... some time passes ...
+note over 6LR1, 6LR2
+6LR1 starts eliding 
+DODAG Configuration Option.
+end note
+6LR1 -> 6LR2: DIO()
+... some time passes ...
+note over 6LR1, 6LR2
+6LR1 receives updated
+Configuration Option.
+end note
+6LR1 -X 6LR2: DIO(cfg2)
+6LR1 -X 6LR2: DIO(cfg2)
+...
+6LR1 -> 6LR2: DIO()
+
+note over 6LR1, 6LR2
+There is no way for routers to know
+that the Configuration has been
+disemminated successfully.
+end note
+
+
+@enduml
