@@ -15,10 +15,23 @@ Access code: 649 726 882
 Slides/Materials: https://github.com/roll-wg/ROLL-Interim-Meeting
 
 Etherpad: https://etherpad.tools.ietf.org/p/roll-interim-virtualmeeting-20190923
+Agenda:
 
-Draft Agenda:
+0) Agenda Bashing
+1) Note Well    https://www.ietf.org/about/note-well/
+2) roll call
 
-- MOPex syntax
-- Capabilities (CAP): CAP handshake, handling CAP-unaware RPL nodes
-- CAP Use-cases: Turnon-8138, P-DAO
-- Eliding CAP/MOPex/CfgOption
+3) Disscuss about: draft-ietf-roll-mopex-cap-00 Mode of Operation extension and Capabilities
+
+-MOPex syntax
+-Capabilities (CAP)
+--CAP handshake
+--handling CAP-unaware RPL nodes
+-CAP Use-cases
+--Turnon-8138
+--P-DAO
+-Eliding CAP/MOPex/CfgOption
+
+4) NPDAO modifications.
+5) AOB
+
