@@ -18,12 +18,7 @@ Slides/Materials: https://github.com/roll-wg/ROLL-Interim-Meeting
 
 Draft Agenda:
 
--
-MOPex syntax
-Capabilities (CAP)
-CAP handshake
-handling CAP-unaware RPL nodes
-CAP Use-cases
-Turnon-8138
-P-DAO
-Eliding CAP/MOPex/CfgOption
+- MOPex syntax
+- Capabilities (CAP): CAP handshake, handling CAP-unaware RPL nodes
+- CAP Use-cases: Turnon-8138, P-DAO
+- Eliding CAP/MOPex/CfgOption
