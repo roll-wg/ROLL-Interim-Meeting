@@ -1,4 +1,4 @@
 # ROLL-Interim-Meeting-
 
-This folder contains information about ROLL Interim Meetings
+This repository contains information about ROLL Interim Meetings
 
