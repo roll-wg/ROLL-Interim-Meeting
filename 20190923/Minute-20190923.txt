@@ -1,0 +1,198 @@
+ROLL Interim Meeting - 23 Sept 2019
+Hosted by ROLL WG
+
+Monday, Sep 23, 2019 9:00 am | 2 hours | (UTC-05:00) Eastern Time (US & Canada)
+Meeting number: 649 726 882
+Password: 44TgnsSv
+https://ietf.webex.com/ietf/j.php?MTID=m597b185680335e4ca5f03c3a78ae662f
+
+Join by phone
+1-650-479-3208 Call-in toll number (US/Canada)
+Access code: 649 726 882
+
+Slides/Materials: https://github.com/roll-wg/ROLL-Interim-Meeting
+
+Participants:
+    1) Michael Richardson
+    2) peter van der Stok
+    3) Alvaro Retana
+    4) Georgios Papadopoulos
+    5) Pascal Thubert
+    6) Ines Robles
+    7) Rahul Jadhav (RJ)
+    8) Dominique Barthel
+
+Draft Agenda:
+
+0) Agenda Bashing
+1) Note Well    https://www.ietf.org/about/note-well/
+2) roll call
+
+3) Disscuss about: draft-ietf-roll-mopex-cap-00 Mode of Operation extension and Capabilities
+
+MOPex syntax
+
+Capabilities (CAP)
+CAP handshake
+handling CAP-unaware RPL nodes
+CAP Use-cases
+Turnon-8138
+P-DAO
+Eliding CAP/MOPex/CfgOption
+
+4) NPDAO modifications.
+5) AOB
+
+------------------------------------------------------------------------------------------
+
+MOPex syntax [Rahul]
+
+Final MOP calculation [https://mailarchive.ietf.org/arch/msg/roll/uRMEgEZPPiJw0Qujrd5_9NyvKIs]
+Keep base MOP as is
+If MOP=7, then use MOPex value as is
+If MOP=7 and MOPex < 7 ... we allow it?
+Simple to implement and easy to understand
+
+Ok, with the change keep, things simple
+iF MOP<7 and MOPex > 0,should be ignored MOPex.
+
+Keep base MOP as it is (MOP=7 then use MOPex value as it is)
+suggestion that with MOP=7, MOPex is a new field with 0 < MOPex < MaxInt
+Recommendation MOPex > 7
+
+Pascal: MOPex, it is a new field,
+
+MOPex, to keep:
+
+Using Config Option
+8 bits extn possible (8b resv field available)
+Eliding MOPex with Config Option possible
+MOP is instance config and not DODAG config. Thus not logical place.
+
+Opt2: New RPL Control Option --
+Allows extending beyond 8 bits
+Eliding criteria can be same a Config Option
+
+Pascal: Option 2 is better
+
+
+Problem Eliding Options: eliding may result in inconsistent config --> there is no way for routes to know that the configuration has been disseminated correctly
+
+Pascal: maybe a counter could help, but it is more overhead.
+Pascal agrees that this problem is real.
+DIO could be used to clarify - 8 bits reserved, sequence counter there,
+
+6.3.1.  Format of the DIO Base Object
+
+        0                   1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       | RPLInstanceID |Version Number |             Rank              |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |G|0| MOP | Prf |     DTSN      |     Flags     |   Reserved    | <-- 4 lower bits
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+       |                                                               |
+       +                                                               +
+       |                                                               |
+       +                            DODAGID                            +
+       |                                                               |
+       +                                                               +
+       |                                                               |
+
+
+MCR: why not use the Version Number?  If we change the configuration, wouldn't we
+have to pull the whole DODAG anyway?
+
+Pascal: Semantically is different,
+Maybe there are some configuration things that can be applied without
+rebuilding the DODAG?
+
+We have agreed to take 4 bits from the DIO Reserved field (lower 4 bits) as
+the ConfigurationVersion.  This is incremented (rolling back to 0 or 1?)
+whenever the configuration options that could be elided in the configuration. --> This issue to the ML
+
+-------------------------------------------------------------------------------------
+
+Rahul: Capabilities:
+
+Carrying CAP in DIO/DAO
+CAP-unaware 6LR  (r2, n1)
+Eliding CAP
+
+Pascal suggests that the capabilities flow is not the same as the DIO, and that
+we should have a "DCO" (DODAG Capability Object) that has some kind of "reliable"
+multicast from parents to children.
+Maybe Node Capability Object (NCO)
+What we have in DUAL. Diffusion Algorithm ((JJ Garcia Luna Aceves)
+- https://en.wikipedia.org/wiki/Diffusing_update_algorithm
+
+mcr: should the root unicast every one of the nodes?
+
+Pascal: set of unicast, or set of multicast,
+
+DUAL never will work in RPL, having the parent wait for all child answers.
+
+1) root wants to pull info from all the nodes.
+2) node wants to get info from the root about its capability.
+3) root needs to decide on basis of the answers.
+
+Envelope:
+1) node pulling from parent
+2) node pulling from root
+3) node pulling from all children
+4) node pulling from all descendants
+(and "node" can be root)
+
+Pascal: Configuration option could be in the Cap Option
+
+Defining CAP:
+Shall we use same bits for both direction?
+Certain CAPs are only indicated from nodes to root
+Certain CAPs may be bidirectional
+
+Pascal: two directions are encoded differently.
+We need to be able to encode consequences of not understanding the capability.
+We need 2 or 3 bits to encode each capability.
+ a) can we join as a router or leaf?
+ b) should you propogate to children? (copy capability)
+ c) {third bit is whether capability is present or not}
+
+four(?) possibilities for CONTROL:
+0) capability not on
+1) join as leaf if not understood
+2) can join as router, if not understood (do not copy to children)
+3A) join as router, copy to children, even if not understood
+3B) do not join if not understood.
+Maybe (2) and (3) are the same, but different envelopes.
+
+Query on capabilities are propogated based upon the envelope (above)
+
+CAP use-case (turnon-8138):
+
+Root signals enable-8138 using ‘T’ flag in DIO Config Option
+But before doing that, Root needs to know if all the devices are 8138 capable
+Thus the need for nodes to advertise capability
+Only need to be sent in DAO
+
+mcr: One query root ask, 8138 capable?
+Second query, I am enabling 8138. The Query is a second capability.
+When you join, you know if they are capable or not.
+turnon8138: it is conf option, not a capability option, it is a command,
+
+WE AGREED to HAVE ANOTHER meeting in ~TWO WEEKS
+11:00 meeting closed.
+
+Pascal’s list of requirements [https://mailarchive.ietf.org/arch/msg/roll/QGoceAp5HDs7FoVJSFOTG3x3y3s]
+Express support for exposing siblings
+Signal supported OFs
+Express support for storing P-DAO
+Express route capacity
+Approx num of routes that can be installed
+Current utilization
+Expected target utilization
+Overload bit that means do not use me for now
+Same for non-storing P-DAO
+Avg num of hops per route e.g., 5.
+Plus: Max num of hops in route
+
+Eliding CAP/MOPex/CfgOption
