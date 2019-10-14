@@ -1,0 +1,173 @@
+
+ROLL Interim Meeting - 14 Oct 2019
+Hosted by ROLL WG
+
+------------------------------------------------------------------------------------------------------------------------
+
+Webex Details:
+
+Monday, Oct 14, 2019 8:45 am | 2 hours 15 minutes | (UTC-05:00) Eastern Time (US & Canada)
+Meeting number: 319 527 168
+Password: pxT5tCu6
+https://ietf.webex.com/ietf/j.php?MTID=mbf22e8e09dfa7a79eccc8646e17153ec
+
+
+Join by phone
+1-650-479-3208 Call-in toll number (US/Canada)
+Access code: 319 527 168
+
+--------------------------------------------------------------------------------------------------------------------
+
+Material: https://github.com/roll-wg/ROLL-Interim-Meeting/tree/master/20191014
+
+----------------------------------------------------------------------------------------------
+
+Participants:
+    Michael Richardson
+    Ines Robles
+    Pascal Thubert
+    Rahul Jadhav
+    Dominique Barthel
+    Rabi Sahoo
+
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
+Agenda:
+
+0) Agenda Bashing
+1) Note Well https://www.ietf.org/about/note-well/
+2) Discuss about: draft-ietf-roll-mopex-cap-00 Mode of Operation extension and Capabilities
+
+- Configuration Option Structure
+- Cap unaware 6LR
+- Capabilities Option structure and semantics
+
+4) AOB
+
+-------------------------------------------------------------------------
+
+Slide-nro 5: Configuration Option Freshness:
+
+How to elide?
+-Use counter in Reserved low-4b
+-Lollipop counter
+--Using just 4b might be an issue?
+for restarting it is important to be lolillop?
+if the root reboot,  after reboot came with updated information, related with the counter should be saved by the root.
+It could have the same behaviour of similar counters.?
+
+Is 4 bits enough?
+Do we need to make this a lollipop counter?  It would need to be saved to NVRAM (on all nodes)
+if it is not a lollipop, and it is the root node (DODAG) that we worry about.
+
+There is no way for a node to know that the root is rebooted. The path sequence indicatest if the root rebooted
+
+Utility outside conf option: Yes - it is a general counter.
+Eliding static fields: e.g. PIO, is same format as ND.
+whether PIO carried or not in DIO?
+
+Pascal: Make it 1 byte
+
+We need to think about for lollipop counters, when do have to store it in flash so that they
+are not re-used again?   The observation draft says this.
+
+Michael: one byte seque number/conf number and include clarification for loolip counters, new document: -- Ask Alvaro as new document or joined document with another one
+
+SET (Static info Eliding counTer)  --- want to count it "SEAL"
+Special Elided Attribute Lollipop = SEAL.
+
+-Which doc should this go in?
+
+
+What should this counter be called?
+-SET (Static info Eliding counTer)
+-Wanted to call it SEAL but could not think of an appropriate full-form
+
+
+Slide nro 6: SET Counter Applicability
+
+Elide what?
+-Configuration Option
+- Future { Cap Option, MOPex }
+
+- What else?
+--- Prefix Information Option and other options which rarely change
+
+Pascal: we need to be exlplict which options beforehand.
+
+Rahul: There is no way of saying if the information have retrieved all the infor or not.
+
+
+
+It is not a problem if different nodes elide different options
+---- Since a query will still reveal the complete set of info regardless of what is elided
+Only the root is allowed to change the counter
+
+Slide nro 7: Capablity Option Syntax
+
+Current draft considers CAPs as sequence of bits, but we are moving towards TLV format
+
+CAP bits
+-Join as router/leaf if cap not understood
+--Copy to children :
+
+Michale: Survey of all nodesto find out which supports one
+
+Rabi: Capability of the node not of all network
+
+Rahul: If
+
+----- Why do we need such flag? Individual cap spec should define whether the node should copy or not.
+
+CAP Info (optional), provides ext info for the CAP
+
+Slide 8:
+
+0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|   Type = TODO | CAP TLVs..
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|   CAPType     |J|C|I|. . . . .| CAPInfo(Opt)
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+J = Join only as leaf if CAP not understood
+C = Copy cap to children
+I = Cap Info present
+
+0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|   CAPLen      | Cap Info(format decided by individual cap spec)
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Michael: Look at current TLV formats. CapType should be bigger.
+Rahul: It is better not include the leng if the cap option is not going to be included
+
+Push bits to the left and make them part of the type. To start we can say we have data or not, if yes, one byte data.
+
+Slide nro 9 : CAP unaware nodes
+
+- CAP unaware node would strip-off the CAP option
+
+ -Thus a mandatory CAP may be ignored
+
+-How to handle it?
+---Should we let CAP be used with only newer MOPs?
+Michael: Yes,
+
+Slide nro 10: Other points
+
+Where to carry capabilities?
+- Last time we discussed using new messages!
+
+
+
+- Shall we allow the node to proactively update the capability set?
+- If caps are used for parent selection, then it will result in additional messaging post parent selection.
