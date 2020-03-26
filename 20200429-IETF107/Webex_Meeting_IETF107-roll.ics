@@ -1,0 +1,45 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 10.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:Europe/Helsinki
+TZURL:http://tzurl.org/zoneinfo-outlook/Europe/Helsinki
+X-LIC-LOCATION:Europe/Helsinki
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0300
+TZNAME:EEST
+DTSTART:19700329T030000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0300
+TZOFFSETTO:+0200
+TZNAME:EET
+DTSTART:19701025T040000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20200326T115444Z
+ATTENDEE;CN="ROLL WG";ROLE=REQ-PARTICIPANT;RSVP=FALSE:MAILTO:roll-chairs@ietf.org
+ORGANIZER;CN="Cisco Webex":MAILTO:messenger@webex.com
+DTSTART;TZID=Europe/Helsinki:20200429T134500
+DTEND;TZID=Europe/Helsinki:20200429T164500
+LOCATION:https://ietf.webex.com/ietf/j.php?MTID=m976a599b4a6b6be830ec4e500329fd33
+TRANSP:OPAQUE
+SEQUENCE:1585223684
+UID:815cc53c-d67c-4387-a857-6ff05f90e066
+DESCRIPTION:\n\nJOIN WEBEX MEETING\nhttps://ietf.webex.com/ietf/j.php?MTID=m976a599b4a6b6be830ec4e500329fd33\n\nMeeting number (access code): 610 440 357\n\n\nMeeting password: Pp6DfDQce26\n\n\n\nJOIN BY PHONE\n1-650-479-3208 Call-in toll number (US/Canada)\nTap here to call (mobile phones only, hosts not supported): tel:%2B1-650-479-3208,,*01*610440357%23%23*01*\n1-877-668-4493 Call-in toll free number (US/Canada)\nTap here to call (mobile phones only, hosts not supported): tel:1-877-668-4493,,*01*610440357%23%23*01*\n\nGlobal call-in numbers\nhttps://ietf.webex.com/ietf/globalcallin.php?MTID=mff41872d02730be39d3aa07dbecbfbcc\n\nToll-free calling restrictions\nhttps://www.webex.com/pdf/tollfree_restrictions.pdf\n\n\nJOIN FROM A VIDEO SYSTEM OR APPLICATION\nDial sip:610440357@ietf.webex.com\nYou can also dial 173.243.2.68 and enter your meeting number.\n\n\nJoin using Microsoft Lync or Microsoft Skype for Business\nDial sip:610440357.ietf@lync.webex.com\n\n\n\nCan't join the meeting? Contact support here:\nhttps://ietf.webex.com/ietf/mc\n\n\n
+X-ALT-DESC;FMTTYPE=text/html:<style type="text/css">\n* {\n    padding: 0;    margin: 0;}\ntable {\n	border-collapse: separate; width =100%;	border: 0;	border-spacing: 0;}\n\ntr {\n	line-height: 18px;}\n\na, td {\n	font-size: 14px;	font-family: Arial;	color: #333;	word-wrap: break-word;	word-break: normal;	padding: 0;}\n\n.title {\n	font-size: 28px;}\n\n.image {\n	width: auto;	max-width: auto;}\n\n.footer {\n	width: 604px;}\n\n.main {\n\n}@media screen and (max-device-width: 800px) {\n	.title {\n		font-size: 22px !important;	}\n	.image {\n		width: auto !important;		max-width: 100% !important;	}\n	.footer {\n		width: 100% !important;		max-width: 604px !important\n	}\n	.main {\n		width: 100% !important;		max-width: 604px !important\n	}\n}\n</style>\n\n<table bgcolor="#FFFFFF" style="padding: 0; margin: 0; border: 0; width: 100%;" align="left">\n	<tr style="height: 28px"><td>&nbsp;</td></tr>\n	<tr>\n		<td align="left" style="padding: 0 20px; margin: 0">\n			<!--<table bgcolor="#FFFFFF" style="border: 0px; width: 100%; padding-left: 50px; padding-right: 50px;" align="left" class="main">\n				<tr>\n					<td align="center" valign="top" >&nbsp;					</td>\n				</tr>\n			</table>-->\n\n\n\n			<table>\n				<tr>\n					<td>\n						<FONT SIZE="4" COLOR="#666666" FACE="arial">When it's time, join the Webex meeting here.</FONT>\n					</td>\n				</tr>\n				<tr style="line-height: 20px;"><td style="height:20px">&nbsp;</td></tr>\n				<tr>\n					<td>\n						<FONT SIZE="2" COLOR="#666666" FACE="arial">Meeting number (access code): 610 440 357</FONT>\n					</td>\n				</tr>\n			</table>\n			<table>\n				<tr>\n					<td>\n						<FONT SIZE="2" COLOR="#666666" FACE="arial"></FONT>\n					</td>\n				</tr>\n			</table>\n			<table><tr><td><FONT SIZE="2" COLOR="#666666" FACE="arial">Meeting password:</FONT></td><td><FONT SIZE="2"  COLOR="#666666" FACE="arial">Pp6DfDQce26</FONT></td></tr></table>\n\n        <table>\n        	<tr style="line-height: 20px;"><td style="height:20px">&nbsp;</td></tr>\n			<tr>\n				<td style="width:auto!important; ">\n					<table border="0" cellpadding="0" cellspacing="0" style="width:auto;width:auto!important;background-color:#43A942; border:0px solid #43A942; border-radius:25px; min-width:160px!important;">\n						<tr>\n							<td align="center" style="padding:10px 36px;"><a href="https://ietf.webex.com/ietf/j.php?MTID=m976a599b4a6b6be830ec4e500329fd33" style="color:#FFFFFF; font-size:20px; text-decoration:none;">Join meeting</a></td>\n						</tr>\n					</table>\n				</td>\n			</tr>\n		</table>\n\n <FONT size="2" COLOR="#FF0000" style="font-family: Arial;"></FONT>\n<FONT SIZE="1" FACE="ARIAL">&nbsp;<BR>&nbsp;<BR></FONT>\n\n&nbsp; <BR><FONT SIZE="4" FACE="ARIAL"><FONT SIZE="3" COLOR="#666666" FACE="arial">Join by phone</FONT> &nbsp; <BR><FONT SIZE="2" COLOR="#666666" FACE="arial"><b><a href='tel:%2B1-650-479-3208,,*01*610440357%23%23*01*' style='color:#00AFF9;  text-decoration:none; font-family: Arial;font-size: 14px;line-height: 24px;'>1-650-479-3208</a></b> Call-in toll number (US/Canada)</FONT> &nbsp; <BR><FONT SIZE="2" COLOR="#666666" FACE="arial"><b><a href='tel:1-877-668-4493,,*01*610440357%23%23*01*' style='color:#00AFF9;  text-decoration:none; font-family: Arial;font-size: 14px;line-height: 24px;'>1-877-668-4493</a></b> Call-in toll free number (US/Canada)</FONT> &nbsp; <BR><FONT SIZE="2" COLOR="#666666" FACE="arial"><a href="https://ietf.webex.com/ietf/globalcallin.php?MTID=mff41872d02730be39d3aa07dbecbfbcc" style="text-decoration:none;font-size:14px;color:#00AFF9">Global call-in numbers</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.webex.com/pdf/tollfree_restrictions.pdf" style="text-decoration:none;font-size:14px;color:#00AFF9">Toll-free calling restrictions</a></FONT>&nbsp; <BR><BR><BR>\n\n<table><tr style="line-height: 20px;"><td style="height:20px">&nbsp;</td></tr></table>\n\n<FONT SIZE="4" FACE="ARIAL"><FONT SIZE="3" COLOR="#666666" FACE="arial">Join from a video system or application</FONT><BR><FONT SIZE="2" COLOR="#666666" FACE="arial">Dial</FONT> <a href="sip:610440357@ietf.webex.com"><FONT SIZE="2" COLOR="#00AFF9" FACE="arial">610440357@ietf.webex.com</FONT></a>&nbsp; <BR><FONT SIZE="2" COLOR="#666666" FACE="arial">You can also dial 173.243.2.68 and enter your meeting number.</FONT> &nbsp; <BR></FONT>&nbsp; <BR>\n\n<table cellpadding="0" cellspacing="0"><tr><td  style="color: #000000; font-family: Arial;font-size: 12px; font-weight: bold; line-height: 24px;"><b>Join using Microsoft Lync or Microsoft Skype for Business</b></td></tr><tr style="margin:0px"><td style="color: #333333; font-family: Arial; font-size: 14px; line-height: 24px;">Dial <a href=" sip:610440357.ietf@lync.webex.com"   style="text-decoration:none;color:#00AFF9">610440357.ietf@lync.webex.com</a></td></tr></table>\n\n			<table style="width: 100%;" align="left" class="main">\n                <tr style="height: 72px"><td>&nbsp;</td></tr>\n				<tr>\n					<td style="height: 24px; color: #000000; font-family:Arial; font-size: 14px; line-height: 24px;">Need help? Go to <a href="http://help.webex.com" style="color:#049FD9; text-decoration:none;">http://help.webex.com</a>\n					</td>\n				</tr>\n                <tr style="height: 44px"><td>&nbsp;</td></tr>\n			</table>\n		</td>\n	</tr>\n</table>\n
+SUMMARY:ROLL IETF 107 Interim Meeting
+PRIORITY:5
+CLASS:PUBLIC
+BEGIN:VALARM
+TRIGGER:-PT5M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR
