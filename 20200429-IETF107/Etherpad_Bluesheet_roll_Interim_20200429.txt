@@ -1,0 +1,233 @@
+ROLL IETF 107 Interim Meeting
+
+Jabber room:  roll@jabber.ietf.org  -- information for setting https://www.ietf.org/how/meetings/jabber/
+
+
+
+Webex Details:
+
+Wednesday, Apr 29, 2020 6:45 am | 3 hours | (UTC-04:00) Eastern Time (US & Canada)
+Meeting number: 610 440 357
+Password: Pp6DfDQce26
+https://ietf.webex.com/ietf/j.php?MTID=m976a599b4a6b6be830ec4e500329fd33
+
+Join by video system
+Dial 610440357@ietf.webex.com
+You can also dial 173.243.2.68 and enter your meeting number.
+
+Join by phone
+1-650-479-3208 Call-in toll number (US/Canada)
+1-877-668-4493 Call-in toll free number (US/Canada)
+Access code: 610 440 357
+
+
+Minutes are at the bottom
+For the minutes:
+  Most common IOT Routing Protocol RPL- Orhan Ergun and Pascal Thubert inventor of the protocol
+  https://www.youtube.com/watch?v=Q_-dvNZLHzs&list=WL&index=39&t=29s
+
++-----------------------------------------------------------------------------------------------------------------+
+|   PARTICIPANTS - BLUESHEET -   |
++-----------------------------------------------------------------------------------------------------------------+
+
+Webex: 6 people
+Jabber: 13 people
+
+  NAME  ---  AFFILIATION
+Ines Robles   Aalto University
+Remous-Aris Koutsiamanis --- IMT Atlantique, France
+Pascal Thubert - Cisco Systems France
+Rahul Jadhav - Huawei
+Rabi Narayan Sahoo  - Juniper
+Dominique Barthel - Orange
+Dimitrios Sourailidis ---  IMT Atlantique, France
+Michael Richardson, Sandelman Software Works
+Georgios PAPADOPOULOS - IMT Atlantique, Framce
+Tim Costello - BT
+Amelia Andersdotter (CENTR)
+Alvaro Retana - Futurewei
+
+
+Meeting notes below.
+
+ Agenda Interim Meeting ROLL IETF 107 :
+
++------------------------+----------------------------------------------------------------------+-------------------+
+|          Time          |                       Topic                                          |    Presenter      |
++------------------------+----------------------------------------------------------------------+-------------------+
+| 11:00 - 11:10 (10 min) |                     WG Status                                        | Ines/Dominique    |
++------------------------+----------------------------------------------------------------------+-------------------+
+| 11:10 - 11:30 (20 min) |          draft-ietf-roll-unaware-leaves                              |     Pascal        |
++------------------------+----------------------------------------------------------------------+-------------------+
+|  11:30- 11:35 (5 min)  |             NPDAO and unaware-leaves                                 |      Rahul        |
++------------------------+----------------------------------------------------------------------+-------------------+
+|  11:35 - 11:40 (5 min) | Updates on AP-ND and 6BBR, state of cluster C310                     |     Pascal        |
++------------------ -----+----------------------------------------------------------------------+-------------------+
+| 11:40 - 11:55 (15 min) |           draft-ietf-roll-capabilities / draft-ietf-roll-mopex       |      Rahul        |
++------------------------+----------------------------------------------------------------------+-------------------+
+| 11:55 - 12:05 (10 min) |           draft-ietf-roll-nsa-extension                              |      Aris         |
++------------------------+----------------------------------------------------------------------+-------------------+
+| 12:05 - 12:15 (10 min) |         draft-ietf-roll-rpl-observations                             |      Rahul        |
++------------------------+----------------------------------------------------------------------+-------------------+
+| 12:15 - 12:25 (10 min) |    draft-papadopoulos-roll-dis-mods-use-cases                        |    Georgios       |
++------------------------+----------------------------------------------------------------------+-------------------+
+| 12:25 - 12:35 (10 min) |        draft-ietf-roll-enrollment-priority                           |     Michael       |
+-------------------------+----------------------------------------------------------------------+-------------------+
+| 12:35 - 12:45 (10 min) |    draft-thubert-roll-eliding-dio-information                        |       Pascal      |
++------------------------+----------------------------------------------------------------------+-------------------+
+ 12:45 - 13:00 (15 min)  |                    Open Floor                                        |    Everyone       |
+ +-----------------------+----------------------------------------------------------------------+-------------------+
+
+Meeting minutes
+
+Times in UTC
+[11:02] WG status (Ines)
+
+[11:07] draft-ietf-roll-unaware-leaves (Pascal)
+was holding Cluster 310.
+need from the field.
+This draft has normative dependency to UseOfRPLInfo.
+9 slides illustrate the various situations. They are good help to read the draft.
+Last 4 drawings are new recommendations.
+Rahul: requests to put these slides into github, into the ROLL/RAL repository.
+MCR: There is also:  https://github.com/iot-dir/slides where slides about IoT stuff, and the icons and components to make new slides are welcome.
+[MCR: I also used Pascal's template RPL DODAG for my slides]
+Pascal: will do
+
+[11:25] NPDAO and unaware-leaves (Rahul)
+justifies the value 195. Aligns with 8505 and unaware-leaves.
+Only change in the draft.
+
+[11:28] Updates on AP-ND and 6BBR, state of cluster C310 (Pascal)
+Pascal informs of notion of clusters at RFC Editor, and the dependencies between drafts in the queue.
+Rahul: how is core-stateless dependant on unaware-leaves?
+Pascal: minimal-security and architecture depend on it.
+
+[11:34] draft-ietf-roll-capabilities / draft-ietf-roll-mopex (Rahul)
+explains the rationale behind capabilities, and allocation of instances.
+mopex: no design change, just forked into separate document.
+discusses backward compatibility issues, and proposed interpretation of msb of option value.
+Pascal: yes. Very important. This is a cornerstone for what it is to be RPLv2.
+Pascal: ignore the option or ignore the DIO altogether?
+Rahul: get that topic into ML.
+Back to capabilities draft.
+- Section added to explain difference between capabilities, Config option and Routing Metrics/Constraints.
+- G flag to mean Global, capability must be copied down unchanged through 6LRs.
+- binary capabilities grouped into a bitfield, called Capability Indicators.
+Dominique: anticipated to use it with Length!=3?
+MCR: align the bits to the right, or better to the left?
+Rahul: either, would need to think about it.
+MCR: bunch them into bytes, and extend bytes to the right? we could ask IANA to help crafting this.
+Rahul: new capability - routing resource capability (useful for P-DAO?), should we use the same
+approach for neighbor chache? if we do it, should we put it into the same capability or a separate one? bring question to ML.
+
+[11:55] draft-ietf-roll-nsa-extension Aris-Remous
+changed DMC to be metric instead of constraint.
+highlights that this metric is not taken into account when computing rank.
+Dominique: do we need a hook to allow future compression?
+Aris: we did implement compression in early work. example provided by 6lora, we set for parent set address. But
+after discussion with Pascal it would be good to have compression for all the control packets, more general approach
+instead of special solution. Can tell by size with 6lora compression.
+Dominique: We could use capabilities to understand which nodes are able to understand the compress form.
+Then, the question which messages use the compression form, which not.
+Aris: The compressor decide. Maybe a flag should be added. not sure.
+Rahul: compression is really needed.
+MCR: used GHC to compress DIO messages. Would compress any IPv6 address in any option, avoid ad-hoc solutions.
+Suggest creating a RPL-level compressor, to be negociated as a capability.
+Aris: agreed. Would also compress Targe Address option.
+Pascal: does it mean GHC MUST be present in every RPLv2 node?
+Pascal: in dao projection, not use of full IPv6 addresses. DAO projection would do same.
+Pascal: default model should be 8138, until we have GHC.
+Pascal: options can be elided. This is also a form of compression.
+Pascal: some options may have to be made mandatory, so that they are never elided.
+Aris: so next steps? WGLC?
+Dominique: OK, didn't hear any objections.
+Dominique: Will post a WGLC on the mailing list.
+
+[12:09] RPL observations (Rahul)
+explains issue of DAO-ACK.
+Proposal is to use TIO to have the BR send a DAO-ACK directly to the originating node, even in storingmode.
+Pascal: maybe this message does not need to be called DAO-ACK. DAO's can be aggregated on the way up.
+Pascal: first DAO indicates new reachable node. For periodic refresh, no latency issue, as long as within lifetime.
+Rahul: agree we should not be calling it DAO-ACK. This asynchronous message could be used for other purposes, too.
+This is the first time, in storing mode, that we have a direct message from the root to a node down the graph.
+Rabi: when a node switches parent, needs the reachibility information?
+Rahul: if parent switches parent, will send aggregated DAO without K flag.
+Pascal: I am concerning about piggybacking this information in the DAO.
+Maybe the First DAO is copy as received all the way up.
+But normally, DAO can be completely regenerated by the intermediate nodes.
+it doesnt have to be stored and forwarded, meaning that should we store this K flag and should
+we put it in every copy that we sent up until we get a DAO from below
+Rahul: K flag similar to E flag in terms of behavior.
+Pascal: E does not change over time, is a physical property of a node. Should intermediate node store K?
+Pascal: root response could be different on first node appearance.
+MCR: kind of a RPL ping. Seems that's what we want.
+MCR: initial exchange is opportunity to do capabilities exchange. Then, refresh knowledge of parents.
+Ines: running out of time. Good discussion. To be brought to the mailing list.
+Rahul: this draft not to be published, how to handle the proposals? errata?
+Ines: will discuss on the ML and at the interim meeting in May
+[MCR: really good idea. Is there a date?] Doodle to go out within the next hours/days.
+
+[12:28] draft-papadopoulos-roll-dis-mods-use-cases (Georgios)
+Describes 3 uses cases that prompt for modifications in DIS message.
+- new node joining established network
+- identifying defunct DODAG
+- probing adjacencies
+Shows preliminary simulation results for use case #1. Shows benefits of proposed solutions of dis-modifications
+Pascal: another use-case is power down, then power-up and electrical smart meters can back up again,.
+On a power-up, you would want multicast DIOs to save on individual transmission.
+Dominique: will take this use case into account.
+
+[12:43] draft-ietf-roll-enrollment-priority Michael
+goes through "animated" slides.
+Node 32 can accept more pledges, sends 0x7f as a priority.
+Node 24 does not know option, deletes it. Node 35, not seing the option, assumes half-way value of 0x40.
+Ines: we need reviews. Please volunteer!
+
+[12:49] draft-thubert-roll-eliding-dio-information (Pascal)
+witness that more and more configuration information appearing in RPL.
+Good because allows autonomous behavior.
+But inflates DIOs.
+Per 6550, DIO options are "optional to send", allows to save on DIO size.
+But what if node misses important option? How to make sure ithas the latest update? How can it probe for last update? (DIS modification)
+Not worked on this draft since IETF106 meeting. Left on the backburner.
+Work to be resumed.
+Probably should be part of cluster of "RPLv2" RFCs.
+Proposal: DIO sequence number.
+- DIO message can be split in multiple messages, still with same sequence number to tell they real form a single one.
+- can check freshness of last received value.
+Introduces an new option, the option of Abbreviated Option (AOO).
+Sequence number can also be used to detect that root has rebooted, e.g., through lollipop.
+Georgios: merge with dis-modifications.
+MCR: let this "coast" for a bit, so that we can push the other documents and get experience.
+MCR: getting close to writing 6550.
+
+[13:04] AOB
+Ines: need for a work meeting in May?
+Dominique: yes.
+
+--------------------------Jabber relevant chat information ------------------------------------
+
+(2:19:05 PM) mcr: really awesome slides.  These will be very useful for future people.
+(2:19:14 PM) ines: yep
+(2:20:40 PM) aretana: I wonder how these could look in SVG so we can include them in the draft.. ;-)   A slightly simpler version, of course.
+(2:22:04 PM) mcr: well, we'd get no colour.
+(2:22:09 PM) mcr: (and no u in colour)
+(2:22:56 PM) mcr: and not even grayscale, so we can't put one thing on another, transparently.
+(2:23:19 PM) mcr: but, there could be a version that probably worked.
+(2:23:27 PM) aretana: No, but it would be a lot more useful than figuring it all out as you read the descriptions…and hoping you got it right.
+(2:23:33 PM) mcr: I agree.
+(2:44:12 PM) mcr: I guess we need to number these bits from left to right?
+(3:04:43 PM) ines: rfc 7400 6LoWPAN-GHC: Generic Header Compression for IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs)
+(3:05:04 PM) mcr: brb. 2min.
+(3:06:32 PM) ines: ok
+(3:21:56 PM) mcr: (8am crontab loads funny pages)
+(3:27:10 PM) mcr: proposal: virtual interim for observations draft only.
+(3:27:35 PM) mcr: we clearly need to get some of the other items out of observations into errata or updates.
+(15:13:44) mcr: okay, we really need to think about rechartering soon for RFC6550bis.
+We need to start thinking about this soon, even if it might take some time to figure out what is in and what is out.
+(15:14:17) mcr: Internet Standard step or cycle at Proposed Standard...
+(15:14:55) mcr: yeah, let's not call it the DAOACK.  RootACK.
+(15:15:07) ines: charter contains that in oct sept we should take that in consideration
+
+----------------------------------------------------------------------------------------------
