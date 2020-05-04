@@ -1,11 +1,12 @@
 Action Points from Roll-interim Meeting 20200429:
 
-- Pascal: to add unaware-leaves slides to GitHub
-- All: discuss about new Option and backward compatibility (minute 0:36-0:39)
-- All: design capability extension mechanism (organised in bytes? - get for IANA advice) (minute 0:44-0:46)
+- Pascal: To add unaware-leaves slides to GitHub [Pascal]
+- Rahul+all: design of new Option and backward compatibility (minute 0:36-0:39)
+- Rahul+all: design capability extension mechanism (organised in bytes? - get for IANA advice) (minute 0:44-0:46) 
 - Rahul: bring discussion to the ML on new capability for routing resource / neighbor cache. (minute 0:46 -:0:47:23)
-- All: NSA - IPv6 compression - (minute 0:55 to 1:08) - ghc, Mopex draft to evaluate mechanism considering sent two DIOs in a row (minute 1:06-1:07)
+- Aris+all: NSA - IPv6 compression - (minute 0:55 to 1:08) - ghc, Mopex draft to evaluate mechanism considering 
+sent two DIOs in a row (minute 1:06-1:07)
 - chairs: WGLC for nsa-extension
-- chairs: interim meeting in May, to discuss RPL observations issues, notably "RPL ping" (minute 1:20- 1:27)
+- chairs: Interim meeting in May, to discuss RPL observations issues, notably "RPL ping" (minute 1:20- 1:27) 
 - Georgios/Dominique: update dis-mods with use case provided by Pascal, check eliding-dio for use cases (minute 1:38 -1:40)
-- chairs: get reviews for enrollment-priority 
+- chairs: To get reviews for enrollment-priority
