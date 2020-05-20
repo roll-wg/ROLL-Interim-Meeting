@@ -1,13 +1,38 @@
-Etherpad: https://etherpad.ietf.org:9009/p/notes-ietf-roll-interim-20200525
-
-Agenda:
-Draft Agenda:
-
-New Option and Backward compatibility
-Compression for control messages? Applicable for nsa-extension
-RPL Observation topics 
-RPL Ping
-Additional Items to be determined
++--------------------------------------------------------------------------------------------------+
+|                                      ROLL interim  Meeting                                       |
++--------------------------------------------------------------------------------------------------+
+|                                              AGENDA                                              |
+|                                                                                                  |
+|                                    MONDAY, May 25, 2020 (UTC)                                    |
+|                                                                                                  |
+|            Etherpad: https://etherpad.ietf.org:9009/p/notes-ietf-roll-interim-20200525           |
+|                                                                                                  |
++----------------+----------------------------------------------------------------+----------------+
+|      Time      |                              Topic                             |    Presenter   |
++----------------+----------------------------------------------------------------+----------------+
+| 11:00 - 11:10  |                            WG Status                           | Ines/Dominique |
+|    [10 min]    |                                                                |                |
+|                | IETF 108: Meeting Format (when we meet? how much time, slots?) |                |
+|                |                                                                |                |
++----------------+----------------------------------------------------------------+----------------+
+| 11:10 - 11:30  |           draft-thubert-roll-eliding-dio-information           |     Pascal     |
+|    [20 min]    |                                                                |                |
++----------------+----------------------------------------------------------------+----------------+
+| 11:30 - 11:50  |              New Option and Backward compatibility             |    Everyone    |
+|     [20 min]   |                                                                |                |
++----------------+----------------------------------------------------------------+----------------+
+| 11:50 - 12:10  | Compression for control messages? Applicable for nsa-extension |    Everyone    |
+|     [20 min]   |                                                                |                |
++----------------+----------------------------------------------------------------+----------------+
+|  12:10 - 12:30 |                     RPL Observation topics                     |    Everyone    |
+|     [20 min]   |                                                                |                |
++----------------+----------------------------------------------------------------+----------------+
+| 12:30 - 12:550 |                            RPL Ping                            |    Everyone    |
+|     [20 min]   |                                                                |                |
++----------------+----------------------------------------------------------------+----------------+
+|  12:50 -13:00  |                           Open Floor	                          |    Everyone    |
+|     [10 min]   |                                                                |                |
++----------------+----------------------------------------------------------------+----------------+
 
 
 Information about remote participation:
