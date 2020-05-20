@@ -1,11 +1,14 @@
 +--------------------------------------------------------------------------------------------------+
-|                                      ROLL interim  Meeting                                       |
+|                                      ROLL Interim  Meeting                                       |
 +--------------------------------------------------------------------------------------------------+
-|                                              AGENDA                                              |
+|                                             AGENDA                                               |
 |                                                                                                  |
-|                                    MONDAY, May 25, 2020 (UTC)                                    |
+| MONDAY, May 25, 2020 (UTC)                                                                       |
 |                                                                                                  |
-|            Etherpad: https://etherpad.ietf.org:9009/p/notes-ietf-roll-interim-20200525           |
+| Etherpad: https://etherpad.ietf.org:9009/p/notes-ietf-roll-interim-20200525                      |
+| Materials:                                                                                       |
+| https://datatracker.ietf.org/meeting/interim-2020-roll-02/session/roll                           |
+| https://github.com/roll-wg/ROLL-Interim-Meeting/tree/master/20200525                             |
 |                                                                                                  |
 +----------------+----------------------------------------------------------------+----------------+
 |      Time      |                              Topic                             |    Presenter   |
@@ -27,7 +30,7 @@
 |  12:10 - 12:30 |                     RPL Observation topics                     |    Everyone    |
 |     [20 min]   |                                                                |                |
 +----------------+----------------------------------------------------------------+----------------+
-| 12:30 - 12:550 |                            RPL Ping                            |    Everyone    |
+|  12:30 - 12:50 |                            RPL Ping                            |    Everyone    |
 |     [20 min]   |                                                                |                |
 +----------------+----------------------------------------------------------------+----------------+
 |  12:50 -13:00  |                           Open Floor	                          |    Everyone    |
