@@ -1,1 +1,31 @@
-
++----------------------------------------------------------------------------------+
+|                               ROLL Interim  Meeting                              |
++----------------------------------------------------------------------------------+
+|                                      AGENDA                                      |
+|                                                                                  |
+|                               Friday, June 26, 2020                              |
+|                                                                                  |
+|    Etherpad: https://etherpad.ietf.org:9009/p/notes-ietf-roll-interim-20200626   |
+|              Github where the link to the recording will be posted:              |
+|       https://github.com/roll-wg/ROLL-Interim-Meeting/tree/master/20200626       |
+|                                                                                  |
+| Material: https://datatracker.ietf.org/meeting/interim-2020-roll-04/session/roll |
++------------------+---------------------------------------------+-----------------+
+|    Time (UTC)    |                    Topic                    |    Presenter    |
++------------------+---------------------------------------------+-----------------+
+|  13:00 - 13:30   |                  WG Status                  |  Ines/Dominique |
+|     [30 min]     |                                             |                 |
+|                  |         -  status of unaware-leaves         |                 |
+|                  |       -  status of capabilities draft       |                 |
+|                  |           -  status of mopex draft          |                 |
+|                  |          -  status of useofrplinfo          |                 |
++------------------+---------------------------------------------+-----------------+
+|  13:30 - 13:50   |       status of DIS Modification draft      |     Georgios    |
+|     [20 min]     |                                             |                 |
++------------------+---------------------------------------------+-----------------+
+|  13:50 - 14:10   |  draft-thubert-roll-eliding-dio-information |      Pascal     |
+|      [20 min]    |                                             |                 |
++------------------+---------------------------------------------+-----------------+
+|  14:10 - 15:00   |                  Open Floor                 |     Everyone    |
+|      [50 min]    |                                             |                 |
++------------------+---------------------------------------------+-----------------+
