@@ -1,0 +1,152 @@
+ROLL IETF Interim Meeting 20200626
+
+Jabber room:  roll@jabber.ietf.org  -- information for setting https://www.ietf.org/how/meetings/jabber/
+
+https://datatracker.ietf.org/meeting/interim-2020-roll-04/materials/
+https://ietf.webex.com/ietf/j.php?MTID=mf9250059100987f251de5701729cc8e2
+
+Slides: https://datatracker.ietf.org/meeting/interim-2020-roll-04/session/roll
+
++--------------------------------+
+|   PARTICIPANTS - BLUESHEET -   |
++--------------------------------+
+Ines Robles - (Logged as ROLL WG)
+Dominique Barthel
+Rahul Jadhav
+Remous-Aris Koutsiamanis - IMT Atlantique, France
+Michael Richardson
+Pascal Thubert (logged as LPWAN WG)
+Alvaro Retana - Futurewei Technologies
+Georgios Papadopoulos - IMT Atlantique (psilos as alias)
+Dimitrios Sourailidis - IMT Atlantique
+
+
+Webex:
+Jabber:  people
+
+
+
+AGENDA:
+
+https://datatracker.ietf.org/doc/agenda-interim-2020-roll-04-roll-01/
+
++----------------------------------------------------------------------------------+
+|                               ROLL Interim  Meeting                              |
++----------------------------------------------------------------------------------+
+|                                      AGENDA                                      |
+|                                                                                  |
+|                               Friday, June 26, 2020                              |
+|                                                                                  |
+|    Etherpad: https://etherpad.ietf.org:9009/p/notes-ietf-roll-interim-20200626   |
+|              Github where the link to the recording will be posted:              |
+|       https://github.com/roll-wg/ROLL-Interim-Meeting/tree/master/20200626       |
+|                                                                                  |
+| Material: https://datatracker.ietf.org/meeting/interim-2020-roll-04/session/roll |
++------------------+---------------------------------------------+-----------------+
+|    Time (UTC)    |                    Topic                    |    Presenter    |
++------------------+---------------------------------------------+-----------------+
+|  13:00 - 13:30   |                  WG Status                  |  Ines/Dominique |
+|     [30 min]     |                                             |                 |
+|                  |         -  status of unaware-leaves         |                 |
+|                  |   -  status of capabilities draft  (Rahul)  |                 |
+|                  |        -  status of mopex draft    (Rahul)  |                 |
+|                  |          -  status of useofrplinfo          |                 |
++------------------+---------------------------------------------+-----------------+
+|  13:30 - 13:50   |       status of DIS Modification draft      |     Georgios    |
+|     [20 min]     |                                             |                 |
++------------------+---------------------------------------------+-----------------+
+|  13:50 - 14:10   |  draft-thubert-roll-eliding-dio-information |      Pascal     |
+|      [20 min]    |                                             |                 |
++------------------+---------------------------------------------+-----------------+
+|  14:10 - 15:00   |                  Open Floor                 |     Everyone    |
+|      [50 min]    |                                             |                 |
++------------------+---------------------------------------------+-----------------+
+
+1PM UTC meeting starts
+
+
+1:05 going through agenda and milestones
+1:07 Going through the status of WG drafts submitted to IESG
+* RPL AODV: coments from Alvaro, new tickets. New authors to address problems raised
+* Unaware: pruned the tree of possibilities. Made consistent with NP_DAO draft. Also some cleanup.
+  Provide comments in the next few days for a chance to get them in before Alvaro processes the doc.
+* MOPEX: moved Extended Control Option bit to msb.
+  Discussion on 1 bit or 2 bits to distinguish Extended vs legacy options. Any comment, please chime in?
+  Extended Options work as a replacement for legacy options (albeit costing 1 more byte), but not vice-versa.
+  Probably reserve 192 Extended options, and 64 legacy options.
+* CAPabilities:
+  Pascal: currently, list has all caps or none. A way to send a few ones, specifically?
+  Pascal: related to the abbreviated options. Will come back to this later in the meeting.
+  List of capabilities in query. If absent, responder will send a list of all capabilities.
+  Pascal: needs to beexplained that node asking for Cpa1 and Cap3, only receiving Cap1, can use a timeout and request Cap3 again.
+  Pascal: case of Root querying all nodes. Would like something "tell me if you don't support Cap5". No strong garantee since the query message might get lost anyway.
+  Rahul: should this be done through DAO or CAPQ?
+  Pascal: Trickle-style or diffusion-style. CAPs need more reliablity than routing info.
+  Pascal: another example is Root querying for available memory in nodes.
+  MCR: assuming Root already has a complete list of nodes? so that it knows it has got a complete answer. If not, how does it know when it is done?
+  Pascal: could go unicast for the nodes it knows and hasn't received an answer from.
+* UseOfRPLInfo:
+  Alvaro: change log is several hundred lines, ten revisions. Unsure what to do with IESG.
+  MCR: most changes relate to unaware-leaves. You could tie this draft to the review of that one.
+  Alvaro: will advertise list of real changes with IESG, and see if another review is needed
+  Pascal: thorough review done at the WG.
+  Alvaro: IoT directorate did not review this. Could add an IOTDir review to executive summary of changes, to expedite it through IESG.
+  Ines: will do.
+* Ines goes quickly through other drafts.
+* RootAck draft: Rahul will update based on advances on unaware-leaves.
+
+1:49 DIS modifications draft (Georgios)
+  * need feedbak on use cases. will show results of DIS modifications.
+  * goes briefly through the 4 current use cases.
+  * any more use cases, please let us know!
+  * goes through proposed modifications to DIS.
+  * shows examples of network topologies and benefit.
+  * shows simulation results (Cooja/Contiki NG).
+  * Debate:
+  * Pascal: MC option is tricky to use. You don't know what value to put in the request.
+  * Pascal: Electrical meter reboot use case. Suggest to use Trickle to cancel sending a DIS.
+  * Dominique:
+  * Rahul: Imin 12 (4 seconds). DIS sent within 4 seconds. If high network density, root keeps resetting Trickle period.
+  * Pascal: rephrasing the issue:
+  * Rahul: was discussed on the mailing list.
+  * Pascal: already discussed difference between resetting the period of the Trickle timer to Imin and resetting the timer at 0.
+  * Rahul:
+  * Pascal:  in the Electrical Meter boot use case, meters should realize that the DIS sent by neighbors is a duplicate of theirs.
+  * Questions: use-cse draft stays separate or becomes merged into solution draft? Merged.
+  * As Appendix or into main part? Pascal: advocates for main part.
+  * Currently two docs with modifications to DIS. What merge/split? To be discussed offline
+
+2:46 draft-thubert-roll-eliding-dio-information (Pascal)
+  * RPLv1 was designed for fixed configurations.
+  * RPLv2 targeted to imporve network operation, add features while nextwork is running. Without bringing it down and restart
+  * great review of draft by Rahul.
+  * elaborates on comments
+  * explains benefit of AOO. More code complexity (remember RCSS per option) but saves on DIO size.
+  * alternative would be to have all options constitute THE context with one RCSS. More/larger DIOs.
+  * Alternative would be AOO is a capability, must be known from parent, so that they know what to send.
+  * Rahul: would prefer option 3 (slide 3), i.e. dropping the AOO completely. Maintaining RCCS per option is quite a complexity.
+  * Rahul: can still introduce it later if really needed. Would recommend to go simple right now.
+  * Pascal: agrees that AOO as a CAP is going beyond control. Recommend to either do AO or not do AOO.
+  * Pascal: historically in RPL, accepted a little more complexit in order to save bytes.
+  * Pascal: assume that Rahul's comments only apply to DIO. But we also need to consider DAOs. For DAOs, I believe we still want the compression provided by the RCSS.
+  * Rahul: get it. Still does not mean we want AOO.
+  * Pascal: do we want DIO compression and/or DAO compression?
+  * Rahul: compression is good, but AOO state is complex (must be persistent, etc.)
+  * Pascal: if Option and RCSS as stored together, they are either in persistent storage or they a renot. If they are not, you loose everything and have to restard from scratch.
+  * Pascal: looks DIO compression is worth the complexity.
+  * MCR: update rate is the issue, getting them to flash. Updating a flash block
+  * Pascal: the 5 options and their associated RCSS should go into the same flash block.
+  * Pascal: intuition different from Rahul's. But not strongly convinced.
+  * Rahul: one update per week is too frequent.
+  * Rahul: as an implementer, I want an option to use a single RCSS for the set of 5 options.
+  * Pascal:
+  * Rahul: AOO should not be mandatory to use.
+  * Pascal: where does the complexity come from?
+  * Rahul: in RAM, need to store RCSS for each option.
+  * Pascal: 10 bytes instead of 2. For the whole RPL network, not per peer.
+  * Pascal: seeking advice, just an intuition.
+  * Pascal: also, adoption by the WG?
+
+3:16 pm
+   Next meeting in September, will send a Doodle out.
+   Meeting is closed.
