@@ -12,22 +12,22 @@ Slides: https://datatracker.ietf.org/meeting/interim-2020-roll-04/session/roll
 +--------------------------------+
 Ines Robles - (Logged as ROLL WG)
 Dominique Barthel
-Rahul Jadhav
+Rahul Jadhav 
 Remous-Aris Koutsiamanis - IMT Atlantique, France
-Michael Richardson
+Michael Richardson 
 Pascal Thubert (logged as LPWAN WG)
 Alvaro Retana - Futurewei Technologies
 Georgios Papadopoulos - IMT Atlantique (psilos as alias)
 Dimitrios Sourailidis - IMT Atlantique
 
 
-Webex:
+Webex:  
 Jabber:  people
 
 
 
-AGENDA:
-
+AGENDA: 
+    
 https://datatracker.ietf.org/doc/agenda-interim-2020-roll-04-roll-01/
 
 +----------------------------------------------------------------------------------+
@@ -74,7 +74,7 @@ https://datatracker.ietf.org/doc/agenda-interim-2020-roll-04-roll-01/
   Discussion on 1 bit or 2 bits to distinguish Extended vs legacy options. Any comment, please chime in?
   Extended Options work as a replacement for legacy options (albeit costing 1 more byte), but not vice-versa.
   Probably reserve 192 Extended options, and 64 legacy options.
-* CAPabilities:
+* CAPabilities: 
   Pascal: currently, list has all caps or none. A way to send a few ones, specifically?
   Pascal: related to the abbreviated options. Will come back to this later in the meeting.
   List of capabilities in query. If absent, responder will send a list of all capabilities.
@@ -89,7 +89,7 @@ https://datatracker.ietf.org/doc/agenda-interim-2020-roll-04-roll-01/
   Alvaro: change log is several hundred lines, ten revisions. Unsure what to do with IESG.
   MCR: most changes relate to unaware-leaves. You could tie this draft to the review of that one.
   Alvaro: will advertise list of real changes with IESG, and see if another review is needed
-  Pascal: thorough review done at the WG.
+  Pascal: thorough review done at the WG. 
   Alvaro: IoT directorate did not review this. Could add an IOTDir review to executive summary of changes, to expedite it through IESG.
   Ines: will do.
 * Ines goes quickly through other drafts.
@@ -105,12 +105,12 @@ https://datatracker.ietf.org/doc/agenda-interim-2020-roll-04-roll-01/
   * Debate:
   * Pascal: MC option is tricky to use. You don't know what value to put in the request.
   * Pascal: Electrical meter reboot use case. Suggest to use Trickle to cancel sending a DIS.
-  * Dominique:
+  * Dominique:  we use the delay spread option for unicast answer. 
   * Rahul: Imin 12 (4 seconds). DIS sent within 4 seconds. If high network density, root keeps resetting Trickle period.
-  * Pascal: rephrasing the issue:
+  * Pascal: rephrasing the issue: 
   * Rahul: was discussed on the mailing list.
   * Pascal: already discussed difference between resetting the period of the Trickle timer to Imin and resetting the timer at 0.
-  * Rahul:
+  * Rahul: We wont be restarting the I if the timer is already in Imin. Then, the shutdown issue is still there.
   * Pascal:  in the Electrical Meter boot use case, meters should realize that the DIS sent by neighbors is a duplicate of theirs.
   * Questions: use-cse draft stays separate or becomes merged into solution draft? Merged.
   * As Appendix or into main part? Pascal: advocates for main part.
@@ -139,7 +139,7 @@ https://datatracker.ietf.org/doc/agenda-interim-2020-roll-04-roll-01/
   * Pascal: intuition different from Rahul's. But not strongly convinced.
   * Rahul: one update per week is too frequent.
   * Rahul: as an implementer, I want an option to use a single RCSS for the set of 5 options.
-  * Pascal:
+  * Pascal: The complexity in code is mainteining 5 values of the controls vs just one
   * Rahul: AOO should not be mandatory to use.
   * Pascal: where does the complexity come from?
   * Rahul: in RAM, need to store RCSS for each option.
