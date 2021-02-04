@@ -1,0 +1,96 @@
+
+Agenda Roll-Interim Meeting -20210129
+https://codimd.ietf.org/notes-ietf-interim-2021-roll-01-roll
+https://ietf.webex.com/ietf/j.php?MTID=m34b599e4c5ac49d9e4bc6128a4cc26e7 
+
+Time: 9:30 am Eastern Time = 2:30 pm UTC = 3:30 pm CET
+
+  Topic						        Duration	   Presenter
+- Introduction/WG-Status:            15 min         [Ines/Dominique]
+- draft-hushe-roll-dodag-metric:     30 min         [Huimin She]  
+- dao-projection status and options  30 min         [Pascal] 
+- Open Floor						 45 min			 Everyone
+
+# Attendees
+- Ines Robles
+- Georgios Papadopoulos
+- Remous-Aris Koutsiamanis
+- Dominique Barthel
+- Michael Richardson
+- Huimin She
+- Li Zhao
+- Rahul Jadhav
+- Amaury Bruniaux
+- Pascal Thubert
+- Alvaro Retana
+- add your name here
+
+# Meeting notes
+Times in UTC
+
+## Intro/status
+[14:31]
+- Note well
+- Note taking
+- Agenda bashing: no comment
+- Status of drafts: please provide comments on enrollment priority draft
+- 
+
+## draft-hushe-roll-dodag-metric (Li Zhao)
+[14:35]
+New DODAG metric.
+DODAG size is proposed as a new metric, to help nodes decide which DODAG to join.
+Li Zhao Presents the draft on behalf of authors
+Explains the value of DODAG si
+Dominique: two bytes for size is enough?
+Pascal: size in exponential units.
+Rahul: what about rank? could it be used to discourage node from joining a DODAG of which the root has a full routing table? 
+Li: WiSun has...different weight
+Pascal: can DODAG size be conveyed by Enrollment Priority? can we merge this work into that darft? (to save admin work later on)
+Rahul: Priority can be changed (increased) while passed down the DODAG, this one cannot. Not quite the same.
+Aris: had a draft on balancing traffic at each node within the DODAG, by announcing number of children: This is different.
+Pascal: this one is about Root routing table size. If nodes are identical and have periodic traffic, also relates to network load. Its the case for WiSun, with electrical meters.
+MCR: 6TiSCH did similar stuff in EBs (outside of encrypted messages). In WiSun, do you assume a node can hear advertisments from both DODAGs?
+LiZhao: first PAN advertisement is not encrypted.
+MCR: look at roll-enrolment-priority, it's not a metric but could be useful. I don't think what you want is a metric in a DMC, because does not need to be evaluated at each hop down the DODAG.
+Pascal: merge this into enrollment-priority, and some info on overall load as well.
+Pascal: seems we still need to decide if we need this info, but in any case it should be merged into another document.
+Georgios agrees.
+Ines: please bring the discussion on the Mailing List.
+
+
+## DAO projection, status and options (Pascal)
+[15:03]
+Pascal reworked draft a lot.
+Track is now a DAODAG inside a DAODAG.
+Node at ingress of track does encapsulation, similar to Root doing encapsulation as an ingress point into the DODAG.
+6man was clear that SRH can only be inserted by the source of the packet (for error reporting).
+MCR: do you mean not 6550 is used recursively?
+Pascal: exactly
+Pascal: now UseOfRPLInfo applies just the same way.
+-16 has several examples. You can find them in the ML as well.
+Can see the VIA as a multihop TIO.
+MCR: originally, adding SM to non-storing mode network
+Pscal: now, we have both.
+6LoRH compression of SRH, usually shared 6LoRH header.
+How does Root know the topology? non-storing mode and sibling info option.
+Psacl: which siblings to advertise (especially if many)? IPR on that, can share.
+
+Profile 1
+SM segments within source routed main DODAG. We shorten the SRH by using the segments.
+
+Profile 2
+same as profile 1, but SR-VIO to install tracks. 
+Installed by the ingress. Sgnalling is simpler.
+
+Profiles 3+ are across the DODAG, need sibling info
+
+Profile 3
+satefull VIO, similar to Profile 1.
+
+Review of Huimin's comments
+Todos
+
+## TODO
+- chairs to go through meeting recording and capture TODOs here
+- bring discussions to ML
